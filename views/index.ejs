@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pokedex</title>
+
+    <link rel="stylesheet" href="/styles/main.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="title-container">
+        <div>
+            <img src="images/pokeball.png" alt="pokeball icon">
+            <h1 class="title-text">Pokedex</h1>
+        </div>
+        <h2>By Pablo Armendariz</h2>
+    </div>
+
+    <div class="pokedex-container">
+        <div class="buttons-top">
+            <img src="images/pokedex-top.png" alt="color buttons">
+        </div>
+        <div class="pokedex-screen"> 
+             <img src=<%= content.sprites.front_default %>  alt="pokemon image">
+            <div class="screen-buttons">
+                <img src="images/pokedex-buttons.png" alt="red buttons">
+                <img src="images/pokedex-lines.png" alt="gray lines">
+            </div>
+        </div>
+        <div class="pokedex-bottom">
+            <img src="images/pokedex-bottom.png" alt="gray joystick">
+            <img src="images/cross.png" alt="gray cross">
+        </div>
+        <form class="pokedex-form" action="/" method="POST">
+            <input type="text" name="pokeName" placeholder="Search Pokemon">
+        </form>
+        <div class="pokemon-info">
+            <p><strong>Name:</strong> <%= content.forms[0].name %></p>
+            <p><strong>No:</strong> <%= content.order %></p>
+            <p>
+                <strong>Type:</strong> 
+                <% content.types.forEach((element, index) => { %>
+                    <%= element.type.name %><%= index < content.types.length - 1 ? "," : "" %>
+                <% }); %>
+            </p>      
+            <p><strong>ID:</strong> <%= content.id %></p>
+            <p>
+                <strong>Abilities:</strong> 
+                <% content.abilities.forEach((element, index) => { %>
+                    <%= element.ability.name %><%= index < content.abilities.length - 1 ? "," : "" %>
+                <% }); %>
+            </p>
+            <p><strong>Height:</strong> <%= content.height/10 %>m</p>
+            <p><strong>Weight:</strong> <%= content.weight/10 %>kg</p>
+            <p><strong>Base experience:</strong> <%= content.base_experience %></p>
+        </div>
+    </div>
+     
+    <footer>
+        <div>
+          <p>Pablo Armendariz © <%= new Date().getFullYear() %></p>
+        </div>
+      </footer>
+</body>
+</html>
